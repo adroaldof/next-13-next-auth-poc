@@ -27,5 +27,5 @@ export function ErrorMessage({ field }: ErrorMessageProps) {
     return null
   }
 
-  return <span className="text-xs text-red-500 mt-1">{fieldError.message?.toString()}</span>
+  return <span className="mt-1 text-xs text-rose-900">{fieldError.message?.toString()}</span>
 }
