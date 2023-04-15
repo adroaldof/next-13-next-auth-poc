@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import './globals.css'
 
 export const metadata = {
@@ -14,16 +15,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="flex items-center">
               <h1 className="ml-2 text-2xl font-bold">AuthApp</h1>
             </div>
-            <div className="flex items-center">
-              <a href="#" className="mr-4">
-                Home
-              </a>
-              <a href="#" className="mr-4">
-                About
-              </a>
-              <a href="#" className="mr-4">
-                Contact
-              </a>
+            <div className="flex items-center gap-2">
+              <Link href="/">Home</Link>
+              <Link href="/about">About</Link>
+              <Link href="/dashboard">Dashboard</Link>
             </div>
           </nav>
           <div className="ml-2 mt-2">{children}</div>
