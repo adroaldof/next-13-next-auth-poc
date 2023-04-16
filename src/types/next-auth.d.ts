@@ -6,11 +6,14 @@ declare module 'next-auth/jwt' {
   interface JWT {
     email: string
     accessToken: string
+    role?: string
   }
 }
 
 declare module 'next-auth' {
   interface Session {
-    user: User
+    user: User & {
+      role?: string
+    }
   }
 }

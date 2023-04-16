@@ -1,5 +1,5 @@
 'use client'
-import { signOut, useSession } from 'next-auth/react'
+import { signIn, signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 
 export const AuthButton = () => {
@@ -12,6 +12,8 @@ export const AuthButton = () => {
       Sign Out
     </button>
   ) : (
-    <Link href="/sign-in">Sign In</Link>
+    <button type="button" onClick={() => signIn()}>
+      Sign In
+    </button>
   )
 }
