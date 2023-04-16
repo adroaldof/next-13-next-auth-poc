@@ -1,6 +1,5 @@
 'use client'
 import { signIn, signOut, useSession } from 'next-auth/react'
-import Link from 'next/link'
 
 export const AuthButton = () => {
   const session = useSession()

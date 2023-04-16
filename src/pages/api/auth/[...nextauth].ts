@@ -1,6 +1,5 @@
-import NextAuth, { Awaitable, RequestInternal, User } from 'next-auth'
+import NextAuth, { RequestInternal, User } from 'next-auth'
 import { NextAuthOptions } from 'next-auth'
-import { JWT } from 'next-auth/jwt/types'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
 export const authOptions: NextAuthOptions = {
@@ -28,7 +27,7 @@ export const authOptions: NextAuthOptions = {
         }
         const body = JSON.stringify({ email: credentials.email, password: credentials.password })
         const headers = { 'Content-Type': 'application/json' }
-        const response = await fetch('http://localhost:5000/api/auth/sign-in', { method: 'POST', body, headers })
+        const response = await fetch(`${process.env.API_URL}/auth/sign-in`, { method: 'POST', body, headers })
         const user = await response.json()
         return !user ? null : (user as User)
       },
