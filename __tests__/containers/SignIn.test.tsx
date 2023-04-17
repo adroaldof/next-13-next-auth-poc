@@ -1,9 +1,16 @@
 import { SignIn } from '@/containers/auth/SignIn'
-import { describe, expect, test } from 'vitest'
+import { afterEach, describe, expect, test } from 'vitest'
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import * as nextAuthReact from 'next-auth/react'
+import * as nextNavigation from 'next/navigation'
+import sinon from 'sinon'
 
 describe('<SignIn />', () => {
+  afterEach(() => {
+    sinon.restore()
+  })
+
   test('renders the sign in header', () => {
     render(<SignIn />)
     const main = within(screen.getByRole('main'))
@@ -35,5 +42,57 @@ describe('<SignIn />', () => {
     await userEvent.type(form.getByRole('textbox', { name: /email/i }), 'not@email')
     await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
     expect(form.getByText(/invalid email/i)).toBeDefined()
+  })
+
+  test('calls the next auth sign in function when the form is valid', async () => {
+    const email = 'john.doe@email.com'
+    const password = '5tr0ngPa55w0r:)'
+    const signInMock = sinon.mock(nextAuthReact)
+    const callbackUrl = '/dashboard'
+    signInMock.expects('signIn').once().calledWith('credentials', { email, password, callbackUrl })
+    render(<SignIn />)
+    const main = within(screen.getByRole('main'))
+    const form = within(main.getByRole('form'))
+    await userEvent.type(form.getByRole('textbox', { name: /email/i }), email)
+    await userEvent.type(form.getByRole('textbox', { name: /password/i }), password)
+    await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
+    signInMock.verify()
+  })
+
+  test('calls the next auth with custom callback url', async () => {
+    const email = 'john.doe@email.com'
+    const password = '5tr0ngPa55w0r:)'
+    const callbackUrl = '/custom-callback-url'
+    const nextNavigationMock = sinon
+      .stub(nextNavigation, 'useSearchParams')
+      .withArgs()
+      .returns({ get: () => callbackUrl } as any)
+    const signInMock = sinon.mock(nextAuthReact)
+    signInMock.expects('signIn').once().calledWith('credentials', { email, password, callbackUrl })
+    render(<SignIn />)
+    const main = within(screen.getByRole('main'))
+    const form = within(main.getByRole('form'))
+    await userEvent.type(form.getByRole('textbox', { name: /email/i }), email)
+    await userEvent.type(form.getByRole('textbox', { name: /password/i }), password)
+    await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
+    signInMock.verify()
+  })
+
+  test('logs the error when sign in has an error', async () => {
+    const email = 'john.doe@email.com'
+    const password = '5tr0ngPa55w0r:)'
+    const errorMessage = 'Sign in error'
+    const consoleMock = sinon.mock(console)
+    consoleMock.expects('error').once().calledWith(errorMessage)
+    const signInMock = sinon.mock(nextAuthReact)
+    signInMock.expects('signIn').once().throws(new Error(errorMessage))
+    render(<SignIn />)
+    const main = within(screen.getByRole('main'))
+    const form = within(main.getByRole('form'))
+    await userEvent.type(form.getByRole('textbox', { name: /email/i }), email)
+    await userEvent.type(form.getByRole('textbox', { name: /password/i }), password)
+    await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
+    signInMock.verify()
+    consoleMock.verify()
   })
 })

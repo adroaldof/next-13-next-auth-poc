@@ -28,9 +28,8 @@ export const SignIn = () => {
   const onSubmit = async ({ email, password }: FormTypes) => {
     try {
       await signIn('credentials', { email, password, callbackUrl, redirect: true })
-      reset()
     } catch (error) {
-      console.error(`error`, error)
+      console.error(`error sign on in:`, error)
     }
   }
 
