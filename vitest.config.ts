@@ -12,7 +12,8 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     coverage: {
-      reporter: ['text', 'json', 'html'],
+      reporter: ['text', 'text-summary', 'html'],
+      skipFull: true,
     },
   },
   resolve: {

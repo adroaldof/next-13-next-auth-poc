@@ -23,7 +23,7 @@ export const SignIn = () => {
     resolver: zodResolver(schema),
   })
 
-  const { handleSubmit, formState, reset } = getInTouchForm
+  const { handleSubmit, formState } = getInTouchForm
 
   const onSubmit = async ({ email, password }: FormTypes) => {
     try {
@@ -49,7 +49,13 @@ export const SignIn = () => {
             <Form.ErrorMessage field="password" />
           </Form.Field>
           <div className="flex flex-row gap-4">
-            <Button size="md" type="submit" fullWidth disabled={formState?.isSubmitting}>
+            <Button
+              size="md"
+              type="submit"
+              fullWidth
+              disabled={formState?.isSubmitting}
+              isLoading={formState?.isSubmitting}
+            >
               Sign In
             </Button>
           </div>
