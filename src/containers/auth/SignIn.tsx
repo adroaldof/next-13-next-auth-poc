@@ -19,7 +19,9 @@ export const SignIn = () => {
   const searchParams = useSearchParams()
   const callbackUrl = searchParams?.get('callbackUrl') || '/dashboard'
 
-  const getInTouchForm = useForm<FormTypes>({ resolver: zodResolver(schema) })
+  const getInTouchForm = useForm<FormTypes>({
+    resolver: zodResolver(schema),
+  })
 
   const { handleSubmit, formState, reset } = getInTouchForm
 
@@ -33,10 +35,10 @@ export const SignIn = () => {
   }
 
   return (
-    <div className="w-1/2 max-w-md rounded bg-zinc-400 p-4">
+    <main className="w-1/2 max-w-md rounded bg-zinc-400 p-4">
       <h2>Welcome back</h2>
       <FormProvider {...getInTouchForm}>
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4" role="form">
           <Form.Field>
             <Form.Label htmlFor="email">Email</Form.Label>
             <Form.Input type="email" name="email" autoComplete="email" />
@@ -44,7 +46,7 @@ export const SignIn = () => {
           </Form.Field>
           <Form.Field>
             <Form.Label htmlFor="password">Password</Form.Label>
-            <Form.Input type="password" name="password" autoComplete="password" />
+            <Form.Input type="password" name="password" autoComplete="password" role="textbox" />
             <Form.ErrorMessage field="password" />
           </Form.Field>
           <div className="flex flex-row gap-4">
@@ -54,6 +56,6 @@ export const SignIn = () => {
           </div>
         </form>
       </FormProvider>
-    </div>
+    </main>
   )
 }
