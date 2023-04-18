@@ -1,0 +1,70 @@
+{
+  "Head": {
+    "title": "AuthApp"
+  },
+  "Navbar": {
+    "about": "Sobre",
+    "dashboard": "Dashboard",
+    "signIn": "Entrar",
+    "signOut": "Sair"
+  },
+  "Home": {
+    "title": "Olá Mundo!",
+    "welcomeMessage": "Seja muito bem-vindo ao AuthApp!"
+  },
+  "SignIn": {
+    "title": "Entrar",
+    "form": {
+      "email": {
+        "label": "E-mail",
+        "placeholder": "Digite seu e-mail",
+        "validation": {
+          "required": "O e-mail é obrigatório",
+          "invalid": "O e-mail é inválido"
+        }
+      },
+      "password": {
+        "label": "Senha",
+        "placeholder": "Digite sua senha",
+        "validation": {
+          "required": "A senha é obrigatória"
+        }
+      },
+      "toast": {
+        "success": {
+          "title": "Bem-vindo!",
+          "message": "Olá {email} novamente!"
+        },
+        "error": {
+          "title": "Erro ao Entrar!",
+          "message": "Houve um erro ao entrar na sua conta, tente novamente mais tarde!"
+        }
+      },
+      "buttons": {
+        "back": "Início",
+        "submit": "Entrar"
+      }
+    }
+  },
+  "AboutPage": {
+    "title": "Sobre",
+    "description": "Este é um projeto para servir de template para uma aplicação com os seguintes requisitos:",
+    "nextJs": "Next.js para gerenciar componentes pelo lado servidor e cliente",
+    "nextAuth": "NextAuth para gerenciar autenticação e autorização",
+    "nextIntl": "NextIntl para gerenciar internacionalização",
+    "jest": "Jest para testes unitários",
+    "cypress": "Cypress para testes de integração"
+  },
+  "DashboardPage": {
+    "title": "Dashboard",
+    "description": "Esta é a página de dashboard, que só pode ser acessada por usuários autenticados."
+  },
+  "UsersPage": {
+    "title": "Usuários",
+    "description": "Esta é a página de usuários, que só pode ser acessada por usuários autenticados."
+  },
+  "AdminPage": {
+    "title": "Admin",
+    "description": "Esta é a página de administração, que só pode ser acessada por usuários autenticados e administradores."
+  }
+}
