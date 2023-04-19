@@ -3,8 +3,11 @@
     "title": "AuthApp"
   },
   "Navbar": {
+    "home": "Home",
     "about": "About",
     "dashboard": "Dashboard",
+    "users": "Users",
+    "admin": "Admin",
     "signIn": "Sign in",
     "signOut": "Sign out"
   },
@@ -55,7 +58,7 @@
     "jest": "Jest to manage unit testing",
     "cypress": "Cypress to manage end-to-end testing"
   },
-  "Dashboard": {
+  "DashboardPage": {
     "title": "Dashboard",
     "description": "This is the dashboard page. You can only see this page if you are signed in."
   },

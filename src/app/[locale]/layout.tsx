@@ -1,9 +1,10 @@
 import { AuthButton } from '@/components/AuthButton'
 import { AppProviders } from '@/components/AppProviders'
-import { Link, useLocale } from 'next-intl'
+import { Link, useLocale, useTranslations } from 'next-intl'
 import { notFound } from 'next/navigation'
 
 import '@/styles/globals.css'
+import { LanguageSwitcherDropdown } from '@/components/dropdown/LanguageSwitcherDropdown'
 
 export const metadata = {
   title: 'AuthApp',
@@ -17,15 +18,16 @@ interface RootLayoutProps {
   }
 }
 
-export default async function I18nLayout({ children, params }: RootLayoutProps) {
+export default function I18nLayout({ children, params }: RootLayoutProps) {
   const locale = useLocale()
+  const translate = useTranslations('Navbar')
 
   if (params.locale !== locale) {
     notFound()
   }
 
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className="text-zinc-700">
         <AppProviders>
           <main className="flex min-h-screen flex-col bg-zinc-300">
@@ -36,12 +38,13 @@ export default async function I18nLayout({ children, params }: RootLayoutProps) 
                 </Link>
               </div>
               <div className="flex items-center gap-4">
-                <Link href="/">Home</Link>
-                <Link href="/about">About</Link>
-                <Link href="/dashboard">Dashboard</Link>
-                <Link href="/users">Users</Link>
-                <Link href="/admin">Admin</Link>
-                <AuthButton />
+                <Link href="/">{translate('home')}</Link>
+                <Link href="/about">{translate('about')}</Link>
+                <Link href="/dashboard">{translate('dashboard')}</Link>
+                <Link href="/users">{translate('users')}</Link>
+                <Link href="/admin">{translate('admin')}</Link>
+                <AuthButton signInLabel={translate('signIn')} signOutLabel={translate('signOut')} />
+                <LanguageSwitcherDropdown locale={locale} />
               </div>
             </nav>
             <div className="flex flex-1">{children}</div>

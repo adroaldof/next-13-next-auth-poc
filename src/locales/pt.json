@@ -3,8 +3,11 @@
     "title": "AuthApp"
   },
   "Navbar": {
+    "home": "Início",
     "about": "Sobre",
     "dashboard": "Dashboard",
+    "users": "Usuários",
+    "admin": "Administração",
     "signIn": "Entrar",
     "signOut": "Sair"
   },

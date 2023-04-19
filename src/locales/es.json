@@ -1,0 +1,73 @@
+{
+  "Head": {
+    "title": "AuthApp"
+  },
+  "Navbar": {
+    "home": "Home",
+    "about": "Acerca de",
+    "dashboard": "Salpicadero",
+    "users": "Usuarios",
+    "admin": "Administración",
+    "signIn": "Inicia sesión",
+    "signOut": "Cerrar sesión"
+  },
+  "Home": {
+    "title": "¡Hola mundo!",
+    "welcomeMessage": "¡Bienvenido a AuthApp!"
+  },
+  "SignIn": {
+    "title": "Inicia sesión",
+    "form": {
+      "email": {
+        "label": "Correo electrónico",
+        "placeholder": "Introduce tu email",
+        "validation": {
+          "required": "Se requiere correo electrónico",
+          "invalid": "El correo electrónico no es válido"
+        }
+      },
+      "password": {
+        "label": "Contraseña",
+        "placeholder": "Introduzca su contraseña",
+        "validation": {
+          "required": "Se requiere contraseña"
+        }
+      },
+      "toast": {
+        "success": {
+          "title": "¡Regístrese con éxito!",
+          "message": "Welcome back {email}!"
+        },
+        "error": {
+          "title": "Sign In Error!",
+          "message": "Sign in error. Please try again later!"
+        }
+      },
+      "buttons": {
+        "back": "Home",
+        "submit": "Inicia sesión"
+      }
+    }
+  },
+  "AboutPage": {
+    "title": "Acerca de",
+    "description": "Se trata de un proyecto orientado a la plantilla de una aplicación con los siguientes requisitos:",
+    "nextJs": "A continuación.js para administrar la representación del lado del servidor y del cliente",
+    "nextAuth": "NextAuth para administrar la autenticación",
+    "nextIntl": "NextIntl para gestionar la internacionalización",
+    "jest": "Jest para gestionar las pruebas unitarias",
+    "cypress": "Cypress gestionará las pruebas de extremo a extremo"
+  },
+  "DashboardPage": {
+    "title": "Salpicadero",
+    "description": "Esta es la página del panel. Solo puede ver esta página si ha iniciado sesión."
+  },
+  "UsersPage": {
+    "title": "Usuarios",
+    "description": "Esta es la página de usuarios. Solo puede ver esta página si ha iniciado sesión."
+  },
+  "AdminPage": {
+    "title": "Admin",
+    "description": "Esta es la página de administración. Solo puedes ver esta página si has iniciado sesión y eres administrador."
+  }
+}

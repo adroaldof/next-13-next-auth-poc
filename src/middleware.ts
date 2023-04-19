@@ -5,8 +5,8 @@ import createMiddleware from 'next-intl/middleware'
 export { withAuth } from 'next-auth/middleware'
 
 const i18nMiddleware = createMiddleware({
-  locales: ['pt', 'en'],
-  defaultLocale: 'pt',
+  locales: ['pt', 'en', 'es'],
+  defaultLocale: '',
 })
 
 export default i18nMiddleware
