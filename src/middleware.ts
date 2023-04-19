@@ -1,25 +1,32 @@
-import { withAuth } from 'next-auth/middleware'
-import { NextResponse } from 'next/server'
+import withAuth from 'next-auth/middleware'
+import createMiddleware from 'next-intl/middleware'
 
-export { withAuth } from 'next-auth/middleware'
+const locales = ['pt', 'en', 'es']
+const publicPages = ['', 'about', 'sign-in']
+const publicRoutes = RegExp(`^/(${locales.join('|')})?(/(${publicPages.join('|')}))?/?$`, 'i')
 
-const notAuthorizedMessage = `You don't have the clearance to access this page.`
+const rolePages = ['admin']
+const rolePagesWhitelist = RegExp(`^/(${locales.join('|')})?(/(${rolePages.join('|')}))?/?$`, 'i')
 
-export default withAuth(
-  async (req, res) => {
-    const { nextUrl, nextauth } = req
+const intlMiddleware = createMiddleware({
+  locales,
+  defaultLocale: 'en',
+  localePrefix: 'always',
+})
 
-    if (nextUrl.pathname.startsWith('/admin') && nextauth.token?.role !== 'admin') {
-      return NextResponse.rewrite(new URL(`/auth-error?message=${notAuthorizedMessage}`, req.url))
-    }
-  },
-  {
-    callbacks: {
-      authorized: ({ token }) => !!token,
+export default withAuth(intlMiddleware, {
+  callbacks: {
+    authorized: ({ req, token }) => {
+      const isPublicRoute = publicRoutes.test(req.nextUrl.pathname)
+      const isRoleBasedRoute = rolePagesWhitelist.test(req.nextUrl.pathname)
+      if (!!token && !isPublicRoute && isRoleBasedRoute) {
+        return token.role === 'admin'
+      }
+      return isPublicRoute || !!token
     },
   },
-)
+})
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/users/:path*', '/admin/:path*'],
+  matcher: ['/((?!api/auth|_next|favicon.ico).*)'],
 }

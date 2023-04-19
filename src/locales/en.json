@@ -1,0 +1,71 @@
+{
+  "Navbar": {
+    "logo": "AuthApp",
+    "home": "Home",
+    "about": "About",
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "admin": "Admin",
+    "signIn": "Sign in",
+    "signOut": "Sign out"
+  },
+  "Home": {
+    "title": "Hello world!",
+    "welcomeMessage": "Welcome to the AuthApp!"
+  },
+  "SignIn": {
+    "title": "Sign In",
+    "form": {
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email",
+        "validation": {
+          "required": "Email is required",
+          "invalid": "Email is invalid"
+        }
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password",
+        "validation": {
+          "required": "Password is required"
+        }
+      },
+      "toast": {
+        "success": {
+          "title": "Sign In Success!",
+          "message": "Welcome back {email}!"
+        },
+        "error": {
+          "title": "Sign In Error!",
+          "message": "Sign in error. Please try again later!"
+        }
+      },
+      "buttons": {
+        "back": "Home",
+        "submit": "Sign In"
+      }
+    }
+  },
+  "AboutPage": {
+    "title": "About",
+    "description": "This is a project aimed as a template for an application with the following requirements:",
+    "nextJs": "Next.js to manage server and client side rendering",
+    "nextAuth": "NextAuth to manage authentication",
+    "nextIntl": "NextIntl to manage internationalization",
+    "jest": "Jest to manage unit testing",
+    "cypress": "Cypress to manage end-to-end testing"
+  },
+  "DashboardPage": {
+    "title": "Dashboard",
+    "description": "This is the dashboard page. You can only see this page if you are signed in."
+  },
+  "UsersPage": {
+    "title": "Users",
+    "description": "This is the users page. You can only see this page if you are signed in."
+  },
+  "AdminPage": {
+    "title": "Admin",
+    "description": "This is the admin page. You can only see this page if you are signed in and you are an admin."
+  }
+}
