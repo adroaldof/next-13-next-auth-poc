@@ -1,8 +1,6 @@
 {
-  "Head": {
-    "title": "AuthApp"
-  },
   "Navbar": {
+    "logo": "AuthApp",
     "home": "Home",
     "about": "About",
     "dashboard": "Dashboard",

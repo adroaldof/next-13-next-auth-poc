@@ -7,6 +7,8 @@
 /node_modules
 /out/
 /.pnp
+/cypress/screenshots
+/cypress/videos
 
 ###############################################################################
 # Ignore these files

@@ -34,7 +34,9 @@ export default function I18nLayout({ children, params }: RootLayoutProps) {
             <nav className="flex flex-shrink-0 items-center justify-between bg-zinc-400 p-4 text-zinc-100">
               <div className="flex items-center">
                 <Link href="/">
-                  <h1 className="ml-2 text-2xl font-bold">AuthApp</h1>
+                  <h1 className="ml-2 text-2xl font-bold" data-cy="logo-description">
+                    {translate('logo')}
+                  </h1>
                 </Link>
               </div>
               <div className="flex items-center gap-4">

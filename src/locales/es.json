@@ -1,8 +1,6 @@
 {
-  "Head": {
-    "title": "AuthApp"
-  },
   "Navbar": {
+    "logo": "AplicaciónDeAutenticación",
     "home": "Home",
     "about": "Acerca de",
     "dashboard": "Salpicadero",
