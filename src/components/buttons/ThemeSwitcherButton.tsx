@@ -6,9 +6,6 @@ import { Button } from '../ui/button/Button'
 
 export const ThemeSwitcherButton = () => {
   const { setTheme, theme } = useTheme()
-  console.log(`***********************`, `  `, `***********************`)
-  console.log(`** theme`, theme)
-
   return (
     <Button
       variant="ghost"
