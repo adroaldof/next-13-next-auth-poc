@@ -1,10 +1,12 @@
-import { AuthButton } from '@/components/AuthButton'
-import { AppProviders } from '@/components/AppProviders'
-import { Link, useLocale, useTranslations } from 'next-intl'
-import { notFound } from 'next/navigation'
-
 import '@/styles/globals.css'
-import { LanguageSwitcherDropdown } from '@/components/dropdown/LanguageSwitcherDropdown'
+import { AppProviders } from '@/components/AppProviders'
+import { useLocale, useTranslations } from 'next-intl'
+import { notFound } from 'next/navigation'
+import { classNames } from '@/lib/class-names'
+import { Inter } from 'next/font/google'
+import { Navbar } from '@/components/Navbar'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'AuthApp',
@@ -27,29 +29,12 @@ export default function I18nLayout({ children, params }: RootLayoutProps) {
   }
 
   return (
-    <html lang={locale}>
-      <body className="text-zinc-700">
+    <html lang={locale} className={classNames('bg-white text-slate-900 antialiased', inter.className)}>
+      <body className="min-h-screen bg-slate-50 antialiased dark:bg-slate-900">
         <AppProviders>
-          <main className="flex min-h-screen flex-col bg-zinc-300">
-            <nav className="flex flex-shrink-0 items-center justify-between bg-zinc-400 p-4 text-zinc-100">
-              <div className="flex items-center">
-                <Link href="/">
-                  <h1 className="ml-2 text-2xl font-bold" data-cy="logo-description">
-                    {translate('logo')}
-                  </h1>
-                </Link>
-              </div>
-              <div className="flex items-center gap-4">
-                <Link href="/">{translate('home')}</Link>
-                <Link href="/about">{translate('about')}</Link>
-                <Link href="/dashboard">{translate('dashboard')}</Link>
-                <Link href="/users">{translate('users')}</Link>
-                <Link href="/admin">{translate('admin')}</Link>
-                <AuthButton signInLabel={translate('signIn')} signOutLabel={translate('signOut')} />
-                <LanguageSwitcherDropdown locale={locale} />
-              </div>
-            </nav>
-            <div className="flex flex-1">{children}</div>
+          <main className="flex min-h-screen flex-col">
+            <Navbar locale={locale} />
+            <div className="container mx-auto flex h-full w-full max-w-7xl flex-1 p-4 pt-24">{children}</div>
           </main>
         </AppProviders>
       </body>

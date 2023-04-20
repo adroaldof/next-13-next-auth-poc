@@ -2,6 +2,7 @@
 
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { FC } from 'react'
+import { Button } from './ui/button/Button'
 
 interface AuthButtonProps {
   signInLabel: string
@@ -14,12 +15,12 @@ export const AuthButton: FC<AuthButtonProps> = ({ signInLabel, signOutLabel }) =
     await signOut({ callbackUrl: '/' })
   }
   return session.status === 'unauthenticated' ? (
-    <button type="button" onClick={() => signIn()}>
+    <Button type="button" variant="link" onClick={() => signIn()} className="px-0">
       {signInLabel}
-    </button>
+    </Button>
   ) : (
-    <button type="button" onClick={() => onSignOut()}>
+    <Button type="button" variant="link" onClick={() => onSignOut()} className="px-0">
       {signOutLabel}
-    </button>
+    </Button>
   )
 }

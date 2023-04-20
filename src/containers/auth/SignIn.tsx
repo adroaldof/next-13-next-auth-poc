@@ -7,6 +7,7 @@ import { signIn } from 'next-auth/react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { useSearchParams } from 'next/navigation'
+import { Heading } from '@/components/ui/text/Heading'
 
 const schema = z.object({
   email: z.string().nonempty('Email is required').email('Invalid email').toLowerCase(),
@@ -21,6 +22,10 @@ export const SignIn = () => {
 
   const getInTouchForm = useForm<FormTypes>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      email: 'adroaldof@gmail.com',
+      password: 'monitor7',
+    },
   })
 
   const { handleSubmit, formState } = getInTouchForm
@@ -34,8 +39,8 @@ export const SignIn = () => {
   }
 
   return (
-    <main className="w-1/2 max-w-md rounded bg-zinc-400 p-4">
-      <h2>Welcome back</h2>
+    <main className="w-1/2 max-w-md rounded border-b-2 border-r-2 bg-slate-100 p-4 dark:border-slate-700 dark:bg-slate-800">
+      <Heading size="sm">Welcome back</Heading>
       <FormProvider {...getInTouchForm}>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4" role="form">
           <Form.Field>
