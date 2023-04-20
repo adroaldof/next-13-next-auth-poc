@@ -34,11 +34,11 @@ export const LanguageSwitcherDropdown: FC<LanguageSwitcherDropdownProps> = ({ lo
           <Button
             variant="ghost"
             size="sm"
-            className="px-5"
+            className="px-2"
             data-cy="switch-language-trigger"
             aria-label="Language Switcher"
           >
-            <Icons.Languages className="absolute rotate-0 scale-100 text-slate-200 transition-all hover:text-slate-900" />
+            <Icons.Languages className="transition-all hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300" />
             <span className="sr-only">Switch Language</span>
           </Button>
         </DropdownMenuTrigger>
