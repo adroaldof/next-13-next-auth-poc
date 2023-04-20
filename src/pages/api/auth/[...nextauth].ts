@@ -2,6 +2,13 @@ import NextAuth, { RequestInternal, User } from 'next-auth'
 import { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
+/**
+ * FIXME: this is a workaround to use next-auth with next-intl
+ * @see https://next-auth.js.org/configuration/options
+ * at the moment 2023-04-19 it was not possible to localize the pages from next auth
+ * I'll wait for the next releases to check when it could be possible the integration with next-intl
+ * https://stackoverflow.com/questions/75983133/nextjs-next-auth-wrong-redirection-with-next-intl
+ */
 export const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/en/sign-in',
