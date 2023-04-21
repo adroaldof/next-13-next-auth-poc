@@ -1,5 +1,8 @@
-import { LabelHTMLAttributes } from 'react'
+import { FC, LabelHTMLAttributes } from 'react'
+import { Label as RxLabel } from '@radix-ui/react-form'
 
-export function Label(props: LabelHTMLAttributes<HTMLLabelElement>) {
-  return <label className="flex items-center justify-between text-sm text-slate-500 dark:text-slate-300" {...props} />
-}
+interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {}
+
+export const Label: FC<LabelProps> = (props: LabelHTMLAttributes<HTMLLabelElement>) => (
+  <RxLabel className="flex items-center justify-between text-sm text-slate-500 dark:text-slate-300" {...props} />
+)
