@@ -1,4 +1,6 @@
 import { useFormContext } from 'react-hook-form'
+import { FC } from 'react'
+import { Message as RxMessage } from '@radix-ui/react-form'
 
 interface ErrorMessageProps {
   field: string
@@ -16,7 +18,7 @@ function get(obj: Record<any, any>, path: string) {
   return result
 }
 
-export function ErrorMessage({ field }: ErrorMessageProps) {
+export const ErrorMessage: FC<ErrorMessageProps> = ({ field }) => {
   const {
     formState: { errors },
   } = useFormContext()
@@ -28,6 +30,8 @@ export function ErrorMessage({ field }: ErrorMessageProps) {
   }
 
   return (
-    <span className="mt-1 text-xs font-bold text-red-600 dark:text-rose-500">{fieldError.message?.toString()}</span>
+    <RxMessage className="mt-1 text-xs font-bold text-red-600 dark:text-rose-500" role="alert">
+      {fieldError.message?.toString()}
+    </RxMessage>
   )
 }

@@ -34,7 +34,7 @@ export default function I18nLayout({ children, params }: RootLayoutProps) {
         <AppProviders>
           <main className="flex min-h-screen flex-col">
             <Navbar locale={locale} />
-            <div className="container mx-auto flex h-full w-full max-w-7xl flex-1 p-4 pt-24">{children}</div>
+            <div className="container mx-auto flex h-full w-full max-w-7xl flex-1 p-2 pt-24">{children}</div>
           </main>
         </AppProviders>
       </body>

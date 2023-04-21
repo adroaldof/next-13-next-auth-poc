@@ -1,6 +1,6 @@
 import { SignIn } from '@/containers/auth/SignIn'
 import { afterEach, describe, expect, test } from 'vitest'
-import { render, screen, within } from '@testing-library/react'
+import { act, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import * as nextAuthReact from 'next-auth/react'
 import * as nextNavigation from 'next/navigation'
@@ -14,7 +14,7 @@ describe('<SignIn />', () => {
   test('renders the sign in header', () => {
     render(<SignIn />)
     const main = within(screen.getByRole('main'))
-    expect(main.getByRole('heading', { level: 2, name: /welcome back/i })).toBeDefined()
+    expect(main.getByRole('heading', { level: 1, name: /welcome back/i })).toBeDefined()
   })
 
   test('renders the sign in form with the email and password fields', () => {
@@ -30,18 +30,22 @@ describe('<SignIn />', () => {
     render(<SignIn />)
     const main = within(screen.getByRole('main'))
     const form = within(main.getByRole('form'))
-    await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
-    expect(form.getByText(/email is required/i)).toBeDefined()
-    expect(form.getByText(/password is required/i)).toBeDefined()
+    await act(async () => {
+      await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
+    })
+    expect(form.getByRole('textbox', { description: /email is required/i })).toBeDefined()
+    expect(form.getByRole('textbox', { description: /password is required/i })).toBeDefined()
   })
 
   test('shows invalid email message when the email is invalid', async () => {
     render(<SignIn />)
     const main = within(screen.getByRole('main'))
     const form = within(main.getByRole('form'))
-    await userEvent.type(form.getByRole('textbox', { name: /email/i }), 'not@email')
-    await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
-    expect(form.getByText(/invalid email/i)).toBeDefined()
+    await act(async () => {
+      await userEvent.type(form.getByRole('textbox', { name: /email/i }), 'not@email')
+      await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
+    })
+    expect(form.getByRole('textbox', { description: /invalid email/i })).toBeDefined()
   })
 
   test('calls the next auth sign in function when the form is valid', async () => {
@@ -53,9 +57,11 @@ describe('<SignIn />', () => {
     render(<SignIn />)
     const main = within(screen.getByRole('main'))
     const form = within(main.getByRole('form'))
-    await userEvent.type(form.getByRole('textbox', { name: /email/i }), email)
-    await userEvent.type(form.getByRole('textbox', { name: /password/i }), password)
-    await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
+    await act(async () => {
+      await userEvent.type(form.getByRole('textbox', { name: /email/i }), email)
+      await userEvent.type(form.getByRole('textbox', { name: /password/i }), password)
+      await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
+    })
     signInMock.verify()
   })
 
@@ -63,7 +69,7 @@ describe('<SignIn />', () => {
     const email = 'john.doe@email.com'
     const password = '5tr0ngPa55w0r:)'
     const callbackUrl = '/custom-callback-url'
-    const nextNavigationMock = sinon
+    sinon
       .stub(nextNavigation, 'useSearchParams')
       .withArgs()
       .returns({ get: () => callbackUrl } as any)
@@ -72,9 +78,11 @@ describe('<SignIn />', () => {
     render(<SignIn />)
     const main = within(screen.getByRole('main'))
     const form = within(main.getByRole('form'))
-    await userEvent.type(form.getByRole('textbox', { name: /email/i }), email)
-    await userEvent.type(form.getByRole('textbox', { name: /password/i }), password)
-    await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
+    await act(async () => {
+      await userEvent.type(form.getByRole('textbox', { name: /email/i }), email)
+      await userEvent.type(form.getByRole('textbox', { name: /password/i }), password)
+      await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
+    })
     signInMock.verify()
   })
 
@@ -89,9 +97,11 @@ describe('<SignIn />', () => {
     render(<SignIn />)
     const main = within(screen.getByRole('main'))
     const form = within(main.getByRole('form'))
-    await userEvent.type(form.getByRole('textbox', { name: /email/i }), email)
-    await userEvent.type(form.getByRole('textbox', { name: /password/i }), password)
-    await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
+    await act(async () => {
+      await userEvent.type(form.getByRole('textbox', { name: /email/i }), email)
+      await userEvent.type(form.getByRole('textbox', { name: /password/i }), password)
+      await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
+    })
     signInMock.verify()
     consoleMock.verify()
   })
