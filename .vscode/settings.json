@@ -1,0 +1,6 @@
+{
+  "cSpell.words": ["hookform"],
+  "cSpell.language": "en,pt-BR,es",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}
