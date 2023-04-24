@@ -14,8 +14,8 @@ export const ThemeSwitcherButton = () => {
       data-cy="theme-switcher"
       aria-label="Theme switcher"
     >
-      <Icons.Sun className="rotate-0 scale-0 transition-all hover:text-slate-900 dark:-rotate-90 dark:scale-100 dark:text-slate-400 dark:hover:text-slate-300" />
-      <Icons.Moon className="absolute rotate-0 scale-100 transition-all hover:text-slate-900 dark:rotate-0 dark:scale-0 dark:text-slate-400 dark:hover:text-slate-300" />
+      <Icons.Sun className="rotate-0 scale-0 stroke-1 text-slate-700 transition-all hover:text-slate-900 dark:-rotate-90 dark:scale-100 dark:text-slate-200 dark:hover:text-slate-300" />
+      <Icons.Moon className="absolute rotate-0 scale-100 stroke-1 text-slate-700 transition-all hover:text-slate-900 dark:rotate-0 dark:scale-0 dark:text-slate-200 dark:hover:text-slate-300" />
       <span className="sr-only">Theme switcher</span>
     </Button>
   )

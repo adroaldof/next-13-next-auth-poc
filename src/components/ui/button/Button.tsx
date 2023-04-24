@@ -1,27 +1,28 @@
 import { classNames } from '@/lib/class-names'
-import { cva, VariantProps } from 'class-variance-authority'
+import { cva, type VariantProps } from 'class-variance-authority'
 import { Loader2 } from 'lucide-react'
 import { forwardRef } from 'react'
 
 export const buttonVariants = cva(
-  'active:scale-95 inline-flex items-center justify-center rounded transition-colors disabled:pointer-events-none',
+  'active:scale-95 inline-flex items-center justify-center rounded transition-colors disabled:pointer-events-none text-slate-200 dark:text-slate-900 dark:hover:bg-slate-200 disabled:opacity-50 disabled:text-slate-300',
   {
     variants: {
       variant: {
-        default:
-          'bg-slate-600 text-white hover:bg-slate-800 dark:bg-slate-300 dark:text-slate-900 dark:hover:bg-slate-200',
-        destructive: 'text-white hover:bg-red-600 dark:hover:bg-red-600',
+        default: 'bg-slate-600 hover:bg-slate-800 dark:bg-slate-300',
+        destructive:
+          'text-red-500 dark:text-red-500 hover:bg-red-600 hover:text-slate-200 dark:hover:text-slate-200 dark:hover:bg-red-600',
         outline:
-          'bg-slate-600 text-white hover:bg-slate-800 dark:bg-slate-300 dark:text-slate-900 dark:hover:bg-slate-200 border border-slate-200 dark:border-slate-700',
-        subtle: 'bg-slate-200 text-slate-900 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-300',
-        ghost:
-          'bg-transparent hover:bg-slate-200 dark:hover:bg-slate-800 dark:text-slate-400 data-[state=open]:bg-transparent dark:data-[state=open]:bg-transparent',
-        link: 'bg-transparent dark:bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-300 hover:bg-transparent dark:hover:bg-transparent',
+          'text-slate-900 dark:text-slate-200 bg-slate-300 hover:bg-slate-200 dark:bg-slate-500 dark:hover:bg-slate-600 border border-slate-900 dark:border-slate-400',
+        ghost: 'text-slate-900 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700',
+        link: 'text-slate-700 dark:text-slate-200 bg-transparent dark:bg-transparent underline-offset-4 hover:underline hover:bg-transparent dark:hover:bg-transparent !px-0',
+      },
+      fullWidth: {
+        true: 'w-full',
       },
       size: {
-        lg: 'h-11 px-8',
+        lg: 'h-11 px-8 text-lg',
         md: 'h-10 py-2 px-4',
-        sm: 'h-9 px-2',
+        sm: 'h-9 px-2 text-sm',
       },
     },
     defaultVariants: {
@@ -39,12 +40,13 @@ export interface ButtonProps
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, children, variant, isLoading, size, fullWidth, ...props }, ref) => (
+  ({ className, children, variant = 'default', size = 'md', isLoading, disabled, fullWidth, role, ...props }, ref) => (
     <button
-      className={classNames(buttonVariants({ variant, size, className }), { 'w-full': fullWidth })}
+      className={classNames(buttonVariants({ variant, size, className, fullWidth }))}
       ref={ref}
-      disabled={isLoading}
+      disabled={isLoading || disabled}
       type="button"
+      role={role || 'button'}
       {...props}
     >
       {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}

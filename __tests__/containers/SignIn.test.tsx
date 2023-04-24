@@ -30,9 +30,7 @@ describe('<SignIn />', () => {
     render(<SignIn />)
     const main = within(screen.getByRole('main'))
     const form = within(main.getByRole('form'))
-    await act(async () => {
-      await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
-    })
+    await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
     expect(form.getByRole('textbox', { description: /email is required/i })).toBeDefined()
     expect(form.getByRole('textbox', { description: /password is required/i })).toBeDefined()
   })
@@ -41,10 +39,8 @@ describe('<SignIn />', () => {
     render(<SignIn />)
     const main = within(screen.getByRole('main'))
     const form = within(main.getByRole('form'))
-    await act(async () => {
-      await userEvent.type(form.getByRole('textbox', { name: /email/i }), 'not@email')
-      await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
-    })
+    await userEvent.type(form.getByRole('textbox', { name: /email/i }), 'not@email')
+    await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
     expect(form.getByRole('textbox', { description: /invalid email/i })).toBeDefined()
   })
 
@@ -57,11 +53,9 @@ describe('<SignIn />', () => {
     render(<SignIn />)
     const main = within(screen.getByRole('main'))
     const form = within(main.getByRole('form'))
-    await act(async () => {
-      await userEvent.type(form.getByRole('textbox', { name: /email/i }), email)
-      await userEvent.type(form.getByRole('textbox', { name: /password/i }), password)
-      await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
-    })
+    await userEvent.type(form.getByRole('textbox', { name: /email/i }), email)
+    await userEvent.type(form.getByRole('textbox', { name: /password/i }), password)
+    await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
     signInMock.verify()
   })
 
@@ -78,11 +72,9 @@ describe('<SignIn />', () => {
     render(<SignIn />)
     const main = within(screen.getByRole('main'))
     const form = within(main.getByRole('form'))
-    await act(async () => {
-      await userEvent.type(form.getByRole('textbox', { name: /email/i }), email)
-      await userEvent.type(form.getByRole('textbox', { name: /password/i }), password)
-      await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
-    })
+    await userEvent.type(form.getByRole('textbox', { name: /email/i }), email)
+    await userEvent.type(form.getByRole('textbox', { name: /password/i }), password)
+    await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
     signInMock.verify()
   })
 
@@ -97,11 +89,9 @@ describe('<SignIn />', () => {
     render(<SignIn />)
     const main = within(screen.getByRole('main'))
     const form = within(main.getByRole('form'))
-    await act(async () => {
-      await userEvent.type(form.getByRole('textbox', { name: /email/i }), email)
-      await userEvent.type(form.getByRole('textbox', { name: /password/i }), password)
-      await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
-    })
+    await userEvent.type(form.getByRole('textbox', { name: /email/i }), email)
+    await userEvent.type(form.getByRole('textbox', { name: /password/i }), password)
+    await userEvent.click(screen.getByRole('button', { name: /sign in/i }))
     signInMock.verify()
     consoleMock.verify()
   })
