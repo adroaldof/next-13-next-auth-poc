@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions'
 import { Button } from '@/components/ui/button/Button'
 
 const meta: Meta<typeof Button> = {
-  title: 'UI/Button',
+  title: 'Buttons/Button',
   component: Button,
   parameters: {
     docs: {
