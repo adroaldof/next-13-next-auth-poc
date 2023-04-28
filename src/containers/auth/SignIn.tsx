@@ -24,7 +24,7 @@ export const SignIn = () => {
     resolver: zodResolver(schema),
   })
 
-  const { handleSubmit, formState, watch } = getInTouchForm
+  const { handleSubmit, formState } = getInTouchForm
 
   const onSubmit = async ({ email, password }: SignIn) => {
     try {
@@ -40,12 +40,12 @@ export const SignIn = () => {
       <Form.Provider form={getInTouchForm} onSubmit={handleSubmit(onSubmit)}>
         <Form.Field name="email">
           <Form.Label htmlFor="email">Email</Form.Label>
-          <Form.Input type="email" name="email" autoComplete="email" />
+          <Form.TextInput type="email" name="email" autoComplete="email" />
           <Form.ErrorMessage field="email" />
         </Form.Field>
         <Form.Field name="password">
           <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Input type="password" name="password" autoComplete="current-password" role="textbox" />
+          <Form.TextInput type="password" name="password" autoComplete="current-password" role="textbox" />
           <Form.ErrorMessage field="password" />
         </Form.Field>
         <div className="flex flex-row gap-4">

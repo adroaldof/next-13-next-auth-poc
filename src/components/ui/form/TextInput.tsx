@@ -6,17 +6,17 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
 }
 
-export function Input(props: InputProps) {
+export const TextInput = (props: InputProps) => {
   const { register } = useFormContext()
 
   return (
     <Control asChild>
       <input
         id={props.name}
-        className="flex-1 rounded border border-slate-400 bg-slate-200 px-3 py-2 text-zinc-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500 dark:bg-slate-300 dark:text-slate-900"
+        className="flex-1 rounded border border-slate-400 bg-slate-200 px-3 py-2 text-zinc-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500 dark:bg-slate-100 dark:text-slate-900"
+        role="textbox"
         {...register(props.name)}
         {...props}
-        role={props.role || 'textbox'}
       />
     </Control>
   )

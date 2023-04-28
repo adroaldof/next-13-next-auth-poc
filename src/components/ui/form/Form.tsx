@@ -1,12 +1,12 @@
 import { ErrorMessage } from './ErrorMessage'
 import { Field } from './Field'
-import { Input } from './Input'
+import { TextInput } from './TextInput'
 import { Label } from './Label'
 import { Provider } from './Provider'
 
 export const Form = {
   Label,
-  Input,
+  TextInput,
   ErrorMessage,
   Field,
   Provider,
