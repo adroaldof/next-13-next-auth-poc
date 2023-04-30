@@ -68,24 +68,9 @@ const meta: Meta<typeof Form.TextInput> = {
     },
   ],
   argTypes: {
-    required: {
-      control: { type: 'boolean', default: false },
-      type: { name: 'boolean', required: false },
-      defaultValue: false,
-      name: 'Required',
-    },
-    disabled: {
-      control: { type: 'boolean', default: false },
-      type: { name: 'boolean', required: false },
-      defaultValue: false,
-      name: 'Disabled',
-    },
-    className: {
-      control: { type: 'text' },
-      defaultValue: '',
-      type: { name: 'string', required: false },
-      name: 'Class Name',
-    },
+    required: { control: 'boolean' },
+    disabled: { control: 'boolean' },
+    className: { control: 'text' },
   },
 }
 

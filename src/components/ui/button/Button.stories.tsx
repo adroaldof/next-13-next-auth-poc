@@ -30,23 +30,12 @@ const meta: Meta<typeof Button> = {
     ),
   ],
   argTypes: {
-    isLoading: {
-      control: { name: 'boolean', required: false },
-      type: { name: 'boolean', required: false },
-      defaultValue: false,
-      name: 'Loading',
-    },
-    disabled: {
-      control: { type: 'boolean', default: false },
-      type: { name: 'boolean', required: false },
-      defaultValue: false,
-      name: 'Disabled',
-    },
-    fullWidth: {
-      defaultValue: false,
-      type: { name: 'boolean', required: false },
-      name: 'Full Width',
-    },
+    children: {},
+    onClick: { control: false },
+    isLoading: { control: 'boolean' },
+    disabled: { control: 'boolean' },
+    fullWidth: { control: 'boolean' },
+    className: { control: 'text' },
     variant: {
       control: { type: 'inline-radio' },
       options: ['default', 'destructive', 'outline', 'ghost', 'link'],
@@ -58,18 +47,6 @@ const meta: Meta<typeof Button> = {
       options: ['sm', 'md', 'lg'],
       defaultValue: 'md',
       name: 'Size',
-    },
-    children: {
-      name: 'Children',
-    },
-    className: {
-      control: { type: 'text' },
-      defaultValue: '',
-      type: { name: 'string', required: false },
-      name: 'Class Name',
-    },
-    onClick: {
-      name: 'On Click',
     },
   },
 }
