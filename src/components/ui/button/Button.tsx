@@ -13,7 +13,7 @@ export const buttonVariants = cva(
           'text-red-500 dark:text-red-500 hover:bg-red-600 hover:text-slate-200 dark:hover:text-slate-200 dark:hover:bg-red-600',
         outline:
           'text-slate-900 dark:text-slate-200 bg-slate-300 hover:bg-slate-200 dark:bg-slate-500 dark:hover:bg-slate-600 border border-slate-900 dark:border-slate-400',
-        ghost: 'text-slate-900 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700',
+        ghost: 'text-slate-900 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-900',
         link: 'text-slate-700 dark:text-slate-200 bg-transparent dark:bg-transparent underline-offset-4 hover:underline hover:bg-transparent dark:hover:bg-transparent !px-0',
       },
       fullWidth: {

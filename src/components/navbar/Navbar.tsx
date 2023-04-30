@@ -43,9 +43,9 @@ export const Navbar: FC<NavbarProps> = ({ logo, children, themeSwitcherButton, l
             >
               <span className="sr-only">Open main menu</span>
               {!isOpen ? (
-                <Icons.Menu className="block text-slate-700 dark:text-slate-200" aria-hidden="true" />
+                <Icons.Menu className="block stroke-1 text-slate-700 dark:text-slate-200" aria-hidden="true" />
               ) : (
-                <Icons.X className="block text-slate-700 dark:text-slate-200" aria-hidden="true" />
+                <Icons.X className="block stroke-1 text-slate-700 dark:text-slate-200" aria-hidden="true" />
               )}
             </Button>
           </div>

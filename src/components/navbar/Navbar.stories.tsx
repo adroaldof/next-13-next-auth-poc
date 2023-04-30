@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { Navbar } from '@/components/navbar/Navbar'
 import { Heading } from '../ui/text/Heading'
 import { Button } from '../ui/button/Button'
+import { Icons } from '../ui/icons/Icons'
 
 const meta: Meta<typeof Navbar> = {
   title: 'Page Structure/Navbar',
@@ -51,5 +52,11 @@ export const Default: Story = {
         Projects
       </Button>,
     ],
+    themeSwitcherButton: (
+      <Button key="theme" size="sm" type="button" variant="ghost">
+        <Icons.Sun className="rotate-0 scale-0 stroke-1 text-slate-700 transition-all hover:text-slate-900 dark:-rotate-90 dark:scale-100 dark:text-slate-200 dark:hover:text-slate-300" />
+        <Icons.Moon className="absolute rotate-0 scale-100 stroke-1 text-slate-700 transition-all hover:text-slate-900 dark:rotate-0 dark:scale-0 dark:text-slate-200 dark:hover:text-slate-300" />
+      </Button>
+    ),
   },
 }
