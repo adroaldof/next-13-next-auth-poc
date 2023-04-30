@@ -20,7 +20,7 @@ const headingVariants = cva('text-slate-700 dark:text-slate-300 leading-tight tr
 interface HeadingProps extends HTMLAttributes<HTMLHeadingElement>, VariantProps<typeof headingVariants> {}
 
 export const Heading: FC<HeadingProps> = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ className, size, children, ...props }, ref) => (
+  ({ className, size = 'md', children, ...props }, ref) => (
     <h1 ref={ref} {...props} className={classNames(headingVariants({ size, className }))} role="heading">
       {children}
     </h1>

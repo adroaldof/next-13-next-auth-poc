@@ -15,11 +15,11 @@ export const AuthButton: FC<AuthButtonProps> = ({ signInLabel, signOutLabel }) =
     await signOut({ callbackUrl: '/' })
   }
   return session.status === 'unauthenticated' ? (
-    <Button type="button" variant="link" onClick={() => signIn()} className="px-0">
+    <Button type="button" variant="link" onClick={() => signIn()} className="justify-start px-0">
       {signInLabel}
     </Button>
   ) : (
-    <Button type="button" variant="link" onClick={() => onSignOut()} className="px-0">
+    <Button type="button" variant="link" onClick={() => onSignOut()} className="justify-start px-0">
       {signOutLabel}
     </Button>
   )

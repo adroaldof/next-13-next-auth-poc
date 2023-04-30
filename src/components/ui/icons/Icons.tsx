@@ -1,3 +1,3 @@
-import { Languages, ChevronRight, ChevronDown, Check, Circle, Sun, Moon } from 'lucide-react'
+import { Menu, X, Languages, ChevronRight, ChevronDown, Check, Circle, Sun, Moon } from 'lucide-react'
 
-export const Icons = { Languages, ChevronRight, ChevronDown, Check, Circle, Sun, Moon }
+export const Icons = { Menu, X, Languages, ChevronRight, ChevronDown, Check, Circle, Sun, Moon }

@@ -1,10 +1,10 @@
 import { FC } from 'react'
-import { AuthButton } from './AuthButton'
-import { ThemeSwitcherButton } from './buttons/ThemeSwitcherButton'
-import { LanguageSwitcherDropdown } from './dropdown/LanguageSwitcherDropdown'
+import { AuthButton } from '../AuthButton'
+import { ThemeSwitcherButton } from '../buttons/ThemeSwitcherButton'
+import { LanguageSwitcherDropdown } from '../dropdown/LanguageSwitcherDropdown'
 import { useTranslations } from 'next-intl'
-import { Heading } from './ui/text/Heading'
-import Link from './ui/Link'
+import { Heading } from '../ui/text/Heading'
+import Link from '../ui/Link'
 
 interface NavbarProps {
   locale: 'en' | 'pt' | 'es'
